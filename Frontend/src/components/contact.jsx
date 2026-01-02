@@ -17,7 +17,7 @@ const Contact = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http:localhost:3000/api/user", // replace with your contact endpoint
+        "https://portfolio-7564.onrender.com/api/user", // replace with your contact endpoint
         { name, email, message }
       );
 

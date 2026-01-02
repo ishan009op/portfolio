@@ -7,7 +7,12 @@ dotenv.config()
 const app=express()
 connect()
 app.use(express.json())
-app.use(cors())
+const allowedOrigin =  'https://portfolio-swart-seven-fh6evx3jkv.vercel.app/';
+
+app.use(cors({
+  origin: allowedOrigin,
+  
+}));
 
 
 app.use('/api/user',userRoutes)
