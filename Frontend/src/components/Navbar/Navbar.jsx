@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Logo from "../../assets/logo.png"; // <-- your logo path here
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,25 +8,30 @@ const Navbar = () => {
     { name: "Home", href: "#hero" },
     { name: "Services", href: "#services" },
     { name: "About", href: "#about" },
+  
     { name: "Contact", href: "#contact" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-md z-50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 md:px-10 py-4">
         {/* Logo */}
-        <a href="#hero" className="flex items-center">
-          <img src={Logo} alt="Logo" className="h-10 md:h-12 w-auto" />
-          <span className="ml-2 text-fuchsia-500 font-bold text-xl md:text-2xl hidden md:inline">
-            Ishan
-          </span>
+        <a href="#hero" className="text-2xl font-bold text-[#45EB28]">
+          Ishan.
         </a>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-8 text-gray-100 font-medium">
+        <ul className="hidden md:flex space-x-8 text-slate-800 font-medium">
           {navLinks.map((link) => (
-            <li key={link.name} className="hover:text-emerald-400 transition">
-              <a href={link.href}>{link.name}</a>
+            <li key={link.name} className="relative group">
+              <a
+                href={link.href}
+                className="hover:text-[#45EB28] transition-colors"
+              >
+                {link.name}
+              </a>
+              {/* underline animation */}
+              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#45EB28] transition-all group-hover:w-full"></span>
             </li>
           ))}
         </ul>
@@ -36,7 +40,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-100 focus:outline-none text-2xl"
+            className="text-slate-800 focus:outline-none text-2xl"
           >
             {isOpen ? "✕" : "☰"}
           </button>
@@ -47,15 +51,19 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.ul
-            className="md:hidden bg-gray-900/95 flex flex-col items-center space-y-6 py-6 text-gray-100 font-medium"
+            className="md:hidden bg-white/95 flex flex-col items-center space-y-6 py-6 text-slate-800 font-medium shadow-lg"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
             {navLinks.map((link) => (
-              <li key={link.name} className="hover:text-emerald-400 transition">
-                <a href={link.href} onClick={() => setIsOpen(false)}>
+              <li key={link.name}>
+                <a
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="hover:text-[#45EB28] transition-colors text-lg"
+                >
                   {link.name}
                 </a>
               </li>

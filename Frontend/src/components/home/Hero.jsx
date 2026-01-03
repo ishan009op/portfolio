@@ -1,62 +1,104 @@
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const services = ["Landing Pages", "Admin Panels", "Websites"];
-
   return (
-    <section id="hero" className="relative w-full min-h-screen bg-gray-900 text-white overflow-hidden flex flex-col justify-center items-center px-6 md:px-20">
-      
-      {/* Floating background blobs */}
-      <div className="absolute -top-32 -right-32 w-72 h-72 md:w-96 md:h-96 bg-fuchsia-500/20 blur-3xl rounded-full animate-pulse-slow"></div>
-      <div className="absolute -bottom-32 -left-32 w-72 h-72 md:w-96 md:h-96 bg-cyan-400/20 blur-3xl rounded-full animate-pulse-slow"></div>
+    <section
+      id="hero"
+      className="w-full min-h-screen bg-white flex items-center px-6 md:px-20"
+    >
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+        
+        {/* LEFT: TEXT */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+            I build clean, fast websites <br />
+            <span className="text-[#45EB28]">
+              that help businesses grow
+            </span>
+          </h1>
 
-      {/* Main content */}
-      <motion.div
-        className="relative text-center max-w-3xl"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1 className="text-5xl md:text-6xl font-bold text-fuchsia-500">
-          I Build Modern Websites
-        </h1>
-        <p className="mt-4 text-gray-300 text-lg md:text-xl">
-          Clean, responsive, and production-ready web solutions to grow your business.
-        </p>
+          <p className="mt-6 text-lg text-gray-800 max-w-xl">
+            Modern landing pages, admin panels, and full-stack websites built
+            with performance, clarity, and scalability in mind.
+          </p>
 
-        {/* Call-to-action buttons */}
-        <div className="mt-6 flex gap-4 justify-center flex-wrap">
-          <a
-            href="#services"
-            className="px-6 py-3 rounded-full bg-fuchsia-500 hover:bg-fuchsia-600 text-gray-900 font-semibold transition"
-          >
-            View Services
-          </a>
-          <a
-            href="#contact"
-            className="px-6 py-3 rounded-full bg-emerald-400 hover:bg-emerald-500 text-gray-900 font-semibold transition"
-          >
-            Contact Me
-          </a>
-        </div>
-
-        {/* Mini service cards */}
-        <div className="mt-10 flex gap-6 justify-center flex-wrap">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-800/50 p-4 rounded-xl text-center shadow-lg hover:scale-105 transition-transform min-w-[150px]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+          <div className="mt-8 flex gap-4">
+            <a
+              href="#contact"
+              className="px-6 py-3 rounded-full bg-[#45EB28] text-black font-semibold hover:opacity-90 transition"
             >
-              {service}
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+              Get in touch
+            </a>
+
+            <a
+              href="#services"
+              className="px-6 py-3 rounded-full border border-slate-300 text-slate-800 font-medium hover:border-[#45EB28] transition"
+            >
+              View services
+            </a>
+          </div>
+        </motion.div>
+
+        {/* RIGHT: FLOATING UI CARDS */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative"
+        >
+          {/* Card 1 */}
+          <motion.div
+            className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-0 left-6 w-64"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ repeat: Infinity, duration: 5 }}
+          >
+            <h3 className="font-semibold text-slate-800 mb-2">
+              Landing Page
+            </h3>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>✔ Fast loading</li>
+              <li>✔ Mobile responsive</li>
+              <li>✔ SEO friendly</li>
+            </ul>
+          </motion.div>
+
+          {/* Card 2 */}
+          <motion.div
+            className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-32 right-6 w-64"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 6 }}
+          >
+            <h3 className="font-semibold text-slate-800 mb-2">
+              Admin Panel
+            </h3>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>✔ User management</li>
+              <li>✔ Secure auth</li>
+              <li>✔ Clean dashboard</li>
+            </ul>
+          </motion.div>
+
+          {/* Card 3 */}
+          <motion.div
+            className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-64 left-12 w-64"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 7 }}
+          >
+            <h3 className="font-semibold text-slate-800 mb-2">
+              Full-Stack App
+            </h3>
+            <ul className="text-sm text-slate-600 space-y-1">
+              <li>✔ MERN stack</li>
+              <li>✔ Scalable APIs</li>
+              <li>✔ Production ready</li>
+            </ul>
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };
