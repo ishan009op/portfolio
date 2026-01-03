@@ -11,7 +11,7 @@ const Contact = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
 
-    const res=await axios.post("https://portfolio-7564.onrender.com",{
+    const res=await axios.post("https://portfolio-7564.onrender.com/api/user",{
       name:Name,
       email:Email,
       message:msg
