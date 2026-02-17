@@ -1,150 +1,121 @@
 import { motion } from "framer-motion";
+import { Terminal, Layout, ShieldCheck, Zap } from "lucide-react"; // Optional: npm i lucide-react
 
 const Hero = () => {
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const cards = [
+    {
+      title: "Performance First",
+      desc: "99+ Lighthouse scores.",
+      icon: <Zap className="text-yellow-400" />,
+      color: "from-yellow-500/20 to-transparent",
+    },
+    {
+      title: "Secure by Design",
+      desc: "JWT & OAuth integration.",
+      icon: <ShieldCheck className="text-blue-400" />,
+      color: "from-blue-500/20 to-transparent",
+    },
+    {
+      title: "Scalable Arch",
+      desc: "Built for 10k+ users.",
+      icon: <Terminal className="text-purple-400" />,
+      color: "from-purple-500/20 to-transparent",
+    },
+  ];
+
   return (
-    <section
-      id="hero"
-      className="w-full min-h-screen bg-white flex items-center px-6 md:px-20"
-    >
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 items-center">
+    <section className="relative w-full min-h-screen bg-[#020617] overflow-hidden flex items-center px-6 md:px-20">
+      {/* Background Decorative Gradient */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/10 blur-[120px] rounded-full" />
+      </div>
+
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
         
-        {/* LEFT: TEXT */}
+        {/* LEFT: TEXT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
-            I build clean, fast websites <br />
-            <span className="text-[#45EB28]">
-              that help businesses grow
+          <motion.div variants={itemVariants} className="inline-block px-4 py-1.5 mb-6 rounded-full border border-slate-700 bg-slate-800/50 text-indigo-300 text-sm font-medium">
+            ✨ Available for new projects
+          </motion.div>
+          
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+            Digital experiences <br />
+            <span className="bg-gradient-to-r from-indigo-400 via-emerald-400 to-indigo-400 bg-clip-text text-transparent">
+              engineered to scale.
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="mt-6 text-lg text-gray-800 max-w-xl">
-            Modern landing pages, admin panels, and full-stack websites built
-            with performance, clarity, and scalability in mind.
-          </p>
+          <motion.p variants={itemVariants} className="mt-8 text-lg text-slate-400 max-w-lg leading-relaxed">
+            I specialize in building high-conversion landing pages and complex 
+            full-stack applications using the **MERN stack** and **Next.js**.
+          </motion.p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <a
-              href="#contact"
-              className="px-6 py-3 rounded-full bg-[#45EB28] text-black font-semibold hover:opacity-90 transition"
-            >
-              Get in touch
-            </a>
-
-            <a
-              href="#services"
-              className="px-6 py-3 rounded-full border border-slate-300 text-slate-800 font-medium hover:border-[#45EB28] transition"
-            >
-              View services
-            </a>
-          </div>
+          <motion.div variants={itemVariants} className="mt-10 flex flex-wrap gap-5">
+            <button className="px-8 py-4 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-500 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all duration-300">
+              Start a Project
+            </button>
+            <button className="px-8 py-4 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:bg-slate-800 transition-all">
+              View Case Studies
+            </button>
+          </motion.div>
         </motion.div>
 
-        {/* RIGHT: FLOATING / STACKED UI CARDS */}
-        <motion.div
-          className="relative w-full"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+        {/* RIGHT: INTERACTIVE GRID */}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
         >
-          {/* Desktop Floating Cards */}
-          <div className="hidden md:block relative h-[350px]">
-            {/* Card 1 */}
-            <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-0 left-6 w-64"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 5 }}
-            >
-              <h3 className="font-semibold text-slate-800 mb-2">Landing Page</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ Fast loading</li>
-                <li>✔ Mobile responsive</li>
-                <li>✔ SEO friendly</li>
-              </ul>
-            </motion.div>
+          {/* Main Large Card */}
+          <motion.div 
+            whileHover={{ y: -5 }}
+            className="sm:col-span-2 bg-slate-900/50 border border-slate-800 p-8 rounded-3xl backdrop-blur-sm group"
+          >
+            <Layout className="mb-4 text-indigo-400 group-hover:scale-110 transition-transform" size={32} />
+            <h3 className="text-xl font-bold text-white mb-2">Modern Dashboards</h3>
+            <p className="text-slate-400">Custom admin panels with real-time data visualization and complex state management.</p>
+            <div className="mt-6 h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 2, delay: 1 }}
+                className="h-full bg-indigo-500" 
+              />
+            </div>
+          </motion.div>
 
-            {/* Card 2 */}
+          {/* Smaller Feature Cards */}
+          {cards.map((card, idx) => (
             <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-32 right-6 w-64"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 6 }}
+              key={idx}
+              whileHover={{ y: -5 }}
+              className={`bg-slate-900/50 border border-slate-800 p-6 rounded-3xl backdrop-blur-sm bg-gradient-to-b ${card.color}`}
             >
-              <h3 className="font-semibold text-slate-800 mb-2">Admin Panel</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ User management</li>
-                <li>✔ Secure auth</li>
-                <li>✔ Clean dashboard</li>
-              </ul>
+              <div className="mb-3">{card.icon}</div>
+              <h4 className="font-bold text-white text-md">{card.title}</h4>
+              <p className="text-sm text-slate-400 mt-1">{card.desc}</p>
             </motion.div>
-
-            {/* Card 3 */}
-            <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md absolute top-64 left-12 w-64"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 7 }}
-            >
-              <h3 className="font-semibold text-slate-800 mb-2">Full-Stack App</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ MERN stack</li>
-                <li>✔ Scalable APIs</li>
-                <li>✔ Production ready</li>
-              </ul>
-            </motion.div>
-          </div>
-
-          {/* Mobile / Tablet Stacked Cards */}
-          <div className="flex flex-col md:hidden gap-4 mt-8">
-            {/* Card 1 */}
-            <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md w-full"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="font-semibold text-slate-800 mb-2">Landing Page</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ Fast loading</li>
-                <li>✔ Mobile responsive</li>
-                <li>✔ SEO friendly</li>
-              </ul>
-            </motion.div>
-
-            {/* Card 2 */}
-            <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md w-full"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h3 className="font-semibold text-slate-800 mb-2">Admin Panel</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ User management</li>
-                <li>✔ Secure auth</li>
-                <li>✔ Clean dashboard</li>
-              </ul>
-            </motion.div>
-
-            {/* Card 3 */}
-            <motion.div
-              className="bg-white border border-slate-200 rounded-xl p-5 shadow-md w-full"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className="font-semibold text-slate-800 mb-2">Full-Stack App</h3>
-              <ul className="text-sm text-slate-600 space-y-1">
-                <li>✔ MERN stack</li>
-                <li>✔ Scalable APIs</li>
-                <li>✔ Production ready</li>
-              </ul>
-            </motion.div>
-          </div>
+          ))}
         </motion.div>
       </div>
     </section>
