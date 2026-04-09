@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 /* index.css */
 html, body {
   margin: 0;
   padding: 0;
-  /* background-color: #111827; same as bg-gray-900 */
-  width: 100%;
-  overflow-x: hidden; /* prevents horizontal scroll from shapes */
+ background: #f8fafc;
+}
+
+
+
+.carter-one-regular {
+  font-family: "Carter One", system-ui;
+  font-weight: 500;
+  font-style: normal;
 }
