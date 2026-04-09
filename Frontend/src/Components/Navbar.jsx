@@ -72,7 +72,7 @@ const Navbar = () => {
 
         {/* Mobile Icon */}
         <div className="md:hidden text-white">
-          <button onClick={() => setOpen(!open)}>
+          <button className="mr-5" onClick={() => setOpen(!open)}>
             {open ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
