@@ -40,7 +40,7 @@ const Navbar = () => {
         <motion.h2
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-2xl carter-one-regular md:text-3xl font-bold text-white"
+          className="text-xl carter-one-regular md:text-3xl font-bold text-white"
         >
           developer Ishan
         </motion.h2>
