@@ -17,36 +17,34 @@ const Navbar = () => {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -10 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
+      transition: { duration: 0.35, ease: "easeOut" },
     },
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
       
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <motion.h2
-          initial={{ opacity: 0, x: -40 }}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl  md:text-3xl font-bold text-white"
+          className="text-2xl font-bold tracking-wide"
         >
-           <div className="text-2xl font-bold tracking-wide">
           <span className="text-white">developer</span>{" "}
           <span className="text-blue-500">Ishan</span>
-        </div>
-        </motion.h2>
+        </motion.div>
 
         {/* Desktop Menu */}
         <motion.ul
@@ -59,9 +57,11 @@ const Navbar = () => {
             <motion.li key={link.title} variants={item}>
               <a
                 href={link.href}
-                className="text-gray-200 hover:text-blue-400 transition font-medium"
+                className="text-gray-200 hover:text-blue-400 transition font-medium relative group"
               >
                 {link.title}
+                {/* underline animation */}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </motion.li>
           ))}
@@ -75,7 +75,7 @@ const Navbar = () => {
 
         {/* Mobile Icon */}
         <div className="md:hidden text-white">
-          <button className="mr-5" onClick={() => setOpen(!open)}>
+          <button onClick={() => setOpen(!open)}>
             {open ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -85,10 +85,10 @@ const Navbar = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-black/90 backdrop-blur-lg px-6 py-6"
+            exit={{ opacity: 0, y: -15 }}
+            className="md:hidden w-full max-w-full overflow-hidden bg-black/90 backdrop-blur-lg px-6 py-6"
           >
             <motion.ul
               variants={container}
