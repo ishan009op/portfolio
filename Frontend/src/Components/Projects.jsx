@@ -23,7 +23,7 @@ const projects = [
     desc: "Restaurant discovery & ordering platform with clean UI.",
     live: "https://lets-eat-green.vercel.app",
     code: "https://github.com/yourusername/letseat",
-    img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1200&auto=format&fit=crop",
+    img: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1200&auto=format&fit=crop",
   },
 ];
 

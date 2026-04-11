@@ -40,9 +40,12 @@ const Navbar = () => {
         <motion.h2
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl carter-one-regular md:text-3xl font-bold text-white"
+          className="text-xl  md:text-3xl font-bold text-white"
         >
-          developer Ishan
+           <div className="text-2xl font-bold tracking-wide">
+          <span className="text-white">developer</span>{" "}
+          <span className="text-blue-500">Ishan</span>
+        </div>
         </motion.h2>
 
         {/* Desktop Menu */}
