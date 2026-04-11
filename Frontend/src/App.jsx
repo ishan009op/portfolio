@@ -16,13 +16,15 @@ function App() {
 
   return (
     <>
-    <Navbar/>
-    <Home/>
-    <About/>
-    <Services/>
-    <Project/>
-    <Contact/>
-    <Footer/>
+  <div className="overflow-x-hidden">
+  <Navbar />
+  <Home />
+  <About />
+  <Services />
+  <Project />
+  <Contact />
+  <Footer/>
+</div>
     </>
   )
 }

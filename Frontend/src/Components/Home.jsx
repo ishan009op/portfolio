@@ -41,14 +41,14 @@ const Home = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-7xl mx-auto px-6 w-full"
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6"
       >
         
         <div className="max-w-2xl text-left">
           
           <motion.h2 
             variants={item}
-            className="text-5xl md:text-6xl lg:text-7xl text-white font-extrabold tracking-tight leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-extrabold tracking-tight leading-tight"
           >
             Clean code meets <br />
             <span className="bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
@@ -58,14 +58,14 @@ const Home = () => {
 
           <motion.p 
             variants={item}
-            className="mt-6 text-gray-300 text-xl"
+            className="mt-6 text-gray-300 text-lg sm:text-xl"
           >
             Building scalable full-stack applications with precision and modern aesthetics.
           </motion.p>
 
           <motion.div 
             variants={item}
-            className="mt-8 flex gap-4"
+            className="mt-8 flex flex-wrap gap-4"
           >
             <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition">
               View Projects
